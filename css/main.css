@@ -1,0 +1,120 @@
+body {
+  font: 20px / 24px var(--theme-body-font-family);
+  background-color: white;
+  min-height: 100vh;
+  max-width: 100vw;
+  --theme-body-font-family: carlmarx, sans-serif;
+  --theme-heading-font-family: reross-rectangular, sans-serif;
+  --heading-font-weight: 400;
+  --heading-line-height: 1.2;
+  --heading-letter-spacing: 0;
+  --theme-font-size-title: 2.44rem;
+  --theme-font-size-subhead: 1.2rem;
+  --m-std: 1rem;
+  --m-sm: 0.5rem;
+  --theme-color-1: crimson;
+  --theme-color-lightgray: #EEE;
+  --theme-color-medgray: #DDD;
+  --theme-color-darkgray: #CCC;
+  --theme-border-radius: 4px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container > .header, .container > .main {
+  height: 100vh;
+}
+
+.main {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--theme-color-lightgray);
+}
+
+.section {
+  margin: 0 2rem;
+}
+
+.card {
+  margin: 0 0 2rem 0;
+}
+
+.btn {
+  border: 0;
+  padding: 0.5rem;
+  transition: 400ms ease-out;
+  border-radius: var(--theme-border-radius);
+  background-color: inherit;
+}
+
+.btn:hover {
+  /* background-color: var(--theme-color-1); */
+  border: 1px var(--theme-color-1);
+  background-color: #dc143cd9;
+  color: white;
+  font-size: 110%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--theme-heading-font-family);
+  font-weight: var(--heading-font-weight);
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
+  margin: 0 0 1rem 0;
+}
+
+h1 {
+  font-size: var(--theme-font-size-title);
+}
+
+.h2 {
+  font-size: 2.44rem;
+  font-weight: 400;
+  font-family: reross-quadratic;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.h3 {
+  color: var(--theme-color-1);
+  font-family: var(--theme-body-font-family);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.subhead {
+  font-family: var(--theme-body-font-family);
+  font-size: var(--theme-font-size-subhead);
+}
+
+p, ol li, ul li {
+  margin-bottom: 1rem;
+}
+
+.smcp, abbr {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.03em;
+}
+
+.error {
+  font-style: italic;
+}
+
+.d-none {
+  display: none;
+  transition: 350ms ease-in;
+}
