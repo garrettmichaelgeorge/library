@@ -2,7 +2,7 @@
 
 const myLibraryData = []
 
-document.onload = onLoad()
+window.onload = () => onLoad()
 
 function onLoad () {
   const form = document.querySelector('#new-book-form')
@@ -32,8 +32,8 @@ function onLoad () {
     const author = document.getElementById('form-author').value
     const pageCount = document.getElementById('form-pageCount').value
     const isRead = document.getElementById('form-isRead').value
-
     const aBook = new Book(title, author, pageCount, isRead)
+
     addBookToLibrary(aBook)
     createCard(aBook)
     hide(form)
@@ -55,14 +55,14 @@ function Book (title, author, pageCount, isRead) {
   this.author = author
   this.pageCount = pageCount
   this.isRead = isRead
-  this.info = function () {
+  this.info = () => {
     let result = ''
     result += `by ${this.author}, `
-    result += `${pageCount} pages, `
-    result += `${isRead ? 'read' : 'not read yet'}`
+    result += `${this.pageCount} pages, `
+    result += `${this.isRead ? 'read' : 'not read yet'}`
     return result
   },
-  this.toggleReadStatus = function () { this.isRead = !this.isRead }
+  this.toggleReadStatus = () => { this.isRead = !this.isRead }
 }
 
 function addBookToLibrary (aBook) {
@@ -77,19 +77,18 @@ function createForm () {
     const li = document.createElement('li')
     li.classList.add('form-item')
 
+    const label = document.createElement('label')
+    label.textContent = `${param} `
+
     const input = document.createElement('input')
     // FIXME: find correct input type
-    input.type = 'text'
+    input.type = param.startsWith('is') ? 'checkbox' : 'text'
     input.id = `form-${param}`
     input.name = `${param}`
 
-    const label = document.createElement('label')
-    label.for = `${input.name}`
-    label.textContent = `${param}`
-
     formList.appendChild(li)
     li.appendChild(label)
-    li.appendChild(input)
+    label.appendChild(input)
   })
 }
 
@@ -107,7 +106,7 @@ function createCard (aBook) {
   const h3 = document.createElement('h3')
   const p = document.createElement('p')
   const btnDestroy = document.createElement('button')
-  btnDestroy.classList.add('btn btn-destroy')
+  btnDestroy.classList.add('btn', 'btn-destroy')
   btnDestroy.addEventListener('click', e => removeFromLibrary(e.target.value))
   const cardContents = [h3, p]
   h3.classList.add('card-header', 'h3')
